@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Music Recommendation</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Bigelow+Rules&display=swap" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+    
+<body>
+
+  <h1> Mood Music Recommender </h1>
+
+  <div class="cls_face_detection">
+
+    <h2> Face Detection </h2>
+
+    <video id="vid" class="cls_video_play" width="640" height="360" autoplay src="{{ url_for('start_streaming') }}"></video>
+    
+    <div class="cls_detect">
+
+      <button class="cls_start_button" onclick="startVideo()">Start</button>
+      <button class="cls_stop_button" onclick="stopVideo()">Stop</button> 
+    
+    </div>  
+
+  </div>
+      
+  <div class="cls_emotion_recognition">
+
+    <h2> Emotion Recognition </h2>
+    
+    <div class="cls_emotion_pred_button">
+      
+      <form id="emotion_form" method="post" action="/emotion_prediction_function">
+        <button class="cls_emotion_button" type="submit"> Predict </button>
+      </form>
+
+    </div>    
+    
+    <div class="cls_emotion_pred_label">
+        <p> {{ emotion_prediction_label }} </p>
+    </div> 
+
+    <div class="cls_emotion_pred_img">
+      <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/css/default.jpg';">      
+    </div>
+
+  </div>
+
+  <div class="cls_recommend_songs">
+    <h2> Song Recommendations </h2>
+
+    <div class="cls_recommend">
+
+      <div class="cls_recommend_songs_button">
+        
+        <form id="songs_form" method="post" action="/recommend_tracks_function">
+          <button class="cls_recommend_button" type="submit"> Recommend </button>
+        </form>
+      
+      </div>
+
+      <div class="cls_results">
+        {% if results %}
+          <ul>
+            {% for name, url in results.items() %}
+              <li> <a href="{{ url }}" target="_blank">{{ name }}</a> </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div> 
+
+    </div>
+  </div>
+    
+    <script>
+        
+        var video = document.getElementById("vid");
+        var stream = null;
+
+        function startVideo() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (s) {
+                    stream = s;
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function (error) {
+                    console.log("Error:", error);
+                });
+        }
+
+        function stopVideo() {
+            if (stream != null) {
+                stream.getTracks().forEach(function (track) {
+                    track.stop();
+                });
+                video.pause();
+            }
+        }
+
+        $('#emotion_button').click(function() {
+            $('#emotion_form').submit();
+        }); 
+        
+    </script>
+</body>
+</html>
