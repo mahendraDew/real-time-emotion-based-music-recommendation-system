@@ -1304,6 +1304,11 @@ about page
 .abt-intro-section p, .abt-intro-section a{
 	margin-bottom: 50px;
 }
+.abt-intro-section button{
+	padding: 20px 0;
+	border-radius: 50px;
+	margin-bottom: 40px;
+}
 
 
 .team-section{
