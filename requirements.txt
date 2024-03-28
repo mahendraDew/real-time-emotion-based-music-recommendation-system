@@ -1,0 +1,9 @@
+Flask
+tensorflow
+keras
+numpy
+opencv_python
+pandas
+requests
+Werkzeug
+gunicorn

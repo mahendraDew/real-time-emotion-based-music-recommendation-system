@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Moodify</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SolMusic HTML Template">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Favicon -->
+	<link href="{{ url_for('static', filename='img/favicon.ico') }}" onerror="this.onerror=null; this.src='static/img/favicon.ico';" rel="shortcut icon"/>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
+	<!-- Stylesheets -->
+
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}">
+	
+	
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section clearfix">
+		<a href="/" class="site-logo">
+			<!-- <img src="img/logo.png" alt=""> -->
+			<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';">      
+
+		</a>
+		<div class="header-right">
+			
+			
+			<div class="user-panel">
+				<button type="button" class="login show-modal" data-toggle="modal" data-target="#myModal">Login</button>
+			</div> 
+		</div>
+		<ul class="main-menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</header>
+	<!-- Header section end -->
+
+	<!-- Model -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content clearfix">
+				
+				<div class="form-modal">
+    
+					<div class="form-toggle">
+						<button id="login-toggle" onclick="toggleLogin()">log in</button>
+						<button id="signup-toggle" onclick="toggleSignup()">sign up</button>
+					</div>
+				
+					<div id="login-form">
+						<form id="mainLoginForm"> 
+							<input type="text" placeholder="Enter email" id="loginEmailInp"/>
+							<input type="password" placeholder="Enter password" id="loginPassInp"/>
+							<button type="submit" class="btn login">login</button>
+							<p><a href="javascript:void(0)">Forgotten account</a></p>
+							<!-- <hr/>
+							<button type="button" class="btn -box-sd-effect login-with-google-btn" > <i class="fa fa-google fa-lg" aria-hidden="true"></i> sign in with google</button> -->
+						</form>
+					</div>
+				
+					<!-- register form -->
+					<div id="signup-form">
+						<form id="mainSignupForm">
+							<input type="text" placeholder="Enter your name" id="nameInp"/>
+							<input type="email" placeholder="Enter your email" id="emailInp"/>
+							<input type="password" placeholder="Create password" id="passwordInp"/>
+							<button type="submit" class="btn signup">Create Account</button>
+							<p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p>
+							
+						</form>
+					</div>
+					<hr/>
+					<button class="btn -box-sd-effect " id="login-with-google-btn"> <i class="fa fa-google fa-lg"></i> sign up with google</button>
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- Model end-->
+
+	<!-- Abt-Hero section -->
+	<section class="about-section">
+        
+        <div class="about-items">
+            <div class="container">
+                <h2>About Us</h2>  
+				<p>Welcome to Moodify - Your Personalized Music Companion</p>
+            </div>
+        </div>
+		
+	</section>
+	<!-- Abt-Hero section end -->
+
+	<!-- Abt-Intro section -->
+	<section class="abt-intro-section ">
+		<div class="container">
+			<h2>Who we Are?</h2>
+			<p class="section-abt">
+				Transform your listening experience with Moodify - the revolutionary music recommendation system that tunes into your emotions. Say goodbye to endlessly scrolling through playlists or struggling to find the right track for your mood. With Moodify, your facial expressions become the conductor, guiding you to the perfect soundtrack for every moment.</br>
+				At Moodify, we're passionate about leveraging cutting-edge technology to enhance your music listening experience. Our emotion-based music recommendation system harnesses the power of facial expression analysis to understand your mood in real-time. Whether you're feeling upbeat, contemplative, or somewhere in between, we curate personalized playlists tailored to your emotions. With Moodify, discover the perfect soundtrack for every moment, effortlessly.
+			</p>
+			<a href="/main" class="site-btn mb-5">Try it now</a>
+		</div>
+	</section>
+	<!-- Abt-Intro section end -->
+
+	<!-- How section -->
+	<section class="how-section spad set-bg" data-setbg="img/how-to-bg.jpg">
+		<div class="container text-white">
+			<div class="section-title">
+				<h2>How it works</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="hi-icon">
+							<!-- <img src="img/icons/brain.png" alt=""> -->
+      <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/brain.png';">      
+
+						</div>
+						<h4>Facial Emotion Analysis </h4>
+						<p>Moodify utilizes cutting-edge facial recognition technology to analyze users' facial expressions in real-time. By detecting subtle changes in facial features, Moodify accurately gauges the user's emotional state.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="hi-icon">
+							<!-- <img src="img/icons/pointer.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/pointer.png';">   
+						</div>
+						<h4>Personalized Recommendations</h4>
+						<p>Once the user's emotions are identified, Moodify's algorithm matches them with a diverse range of music tracks tailored to their current mood. Whether feeling upbeat, relaxed, or somewhere in between, users receive personalized playlists curated to uplift their spirits or complement their mood.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="hi-icon">
+							<!-- <img src="img/icons/smartphone.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/smartphone.png';">   
+						</div>
+						<h4>Continuous Learning</h4>
+						<p>Moodify continuously refines its recommendations based on user feedback and interaction. As users engage with the platform and provide input on song preferences, Moodify adapts its suggestions to better align with individual tastes, ensuring an increasingly personalized and enjoyable music discovery experience.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- How section end -->
+
+	<!-- Team section -->
+	<section class="team-section ">
+		<div class="container">
+			<div class="row">
+				<h2>Our Team</h2>
+				<p class="section-abt">
+					We're the people behind EmoTunes! Get to know us and the passion we share for music and technology. From developers to designers, we're here to make your music experience unforgettable.
+				</p>
+			</div>
+			<div class="card-deck">
+				<div class="card">
+				  <!-- <img class="" src="img/services/1.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/mahendra.jpg';">   
+				  <div class="card-body">
+					<h5 class="card-title">Mahendra Dewangan</h5>
+					<hr>
+					<div class="social-links">
+						<a href="https://twitter.com/mahendra_Dew"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.linkedin.com/in/mahendradew/"><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+				<div class="card">
+				  <!-- <img class="card-img-top" src="img/services/3.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/maurya.jpg';"> 
+				  <div class="card-body">
+					<h5 class="card-title">Maurya Singh Gajendra</h5>
+					<hr>
+					<div class="social-links">
+						<a href="https://twitter.com/maurya_singhG"><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+				<div class="card">
+				  <!-- <img class="card-img-top" src="img/services/4.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/gopal.png';"> 
+				  <div class="card-body">
+					<h5 class="card-title">Gopal Kaiwart</h5>
+					<hr>
+					<div class="social-links">
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href="https://www.linkedin.com/in/gopal-kaiwart-83656023b/"><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="card-deck">
+				<div class="card">
+				  <!-- <img class="" src="img/services/1.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/rajeev.jpg';">   
+				  <div class="card-body">
+					<h5 class="card-title">Rajeev Jain</h5>
+					<hr>
+					<div class="social-links">
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+				<div class="card">
+				  <!-- <img class="card-img-top" src="img/services/3.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/pranjal.jpg';"> 
+				  <div class="card-body">
+					<h5 class="card-title">Pranjal Sahu</h5>
+					<hr>
+					<div class="social-links">
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+				<div class="card">
+				  <!-- <img class="card-img-top" src="img/services/4.jpg" alt="Card image cap"> -->
+				  <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/team/jaypal.jpg';"> 
+				  <div class="card-body">
+					<h5 class="card-title">Jaypal Telam</h5>
+					<hr>
+					<div class="social-links">
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-linkedin"></i></a>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Servies section end -->
+
+	<!-- Features section -->
+	<section class="features-section spad">
+		<div class="container feature-main-container">
+			<h2>Discover the Features of Moodiy</h2>
+			<p>Explore how Moodiy uses facial emotion recognition to enhance your music listening experience</p>
+			<div class="feature-containers">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="feature-item">
+							<!-- <img src="img/icons/1.png" alt=""> -->
+							<!-- <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/1.png';">  -->
+							<h4>Facial Emotion Recognition</h4>
+							<p>Moodify uses advanced facial recognition technology to analyze users' facial expressions in real-time, accurately gauging their emotional state.</p>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="feature-item">
+							<!-- <img src="img/icons/1.png" alt=""> -->
+							<!-- <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/1.png';">  -->
+							<h4>Personalized Playlists</h4>
+							<p>Based on the user's emotional state, Moodify's algorithm matches them with a diverse range of music tracks tailored to their current mood.</p>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="feature-item">
+							<!-- <img src="img/icons/1.png" alt=""> -->
+							<!-- <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/1.png';">  -->
+							<h4>Facial Emotion Recognition</h4>
+							<p>Moodify uses advanced facial recognition technology to analyze users' facial expressions in real-time, accurately gauging their emotional state.</p>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="feature-item">
+							<!-- <img src="img/icons/1.png" alt=""> -->
+							<!-- <img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/1.png';">  -->
+							<h4>Personalized Playlists</h4>
+							<p>Based on the user's emotional state, Moodify's algorithm matches them with a diverse range of music tracks tailored to their current mood.</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Feature section end -->
+
+	<!-- howtouse section end -->
+	<section class="howtouse-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="section-title">
+						<h2>How to Use</h2>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<p>Our platform offers a seamless and intuitive experience to help you discover the perfect soundtrack for every moment. In this guide, we'll walk you through the simple steps to unleash the full potential of Moodify and immerse yourself in personalized music experiences like never before. Let's dive in!</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/brain.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/brain.png';"> 
+						</div>
+						<h4>Create an account </h4>
+						<p> Get started by creating your personalized Moodify account. Simply provide basic information such as your email address and create a secure password. Once registered, you'll gain access to a world of customized music experiences tailored to your emotions.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/pointer.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/pointer.png';"> 
+						</div>
+						<h4>Set Your Mood</h4>
+						<p>After logging in, begin by selecting or inputting your current mood. Whether you're feeling upbeat and energetic, calm and relaxed, or somewhere in between, Moodify's intuitive interface allows you to express your emotions effortlessly.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/smartphone.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/smartphone.png';"> 
+						</div>
+						<h4>Explore Curated Playlists</h4>
+						<p>Once your mood is set, dive into Moodify's extensive library of curated playlists designed to match your emotional state. Browse through a diverse range of genres, artists, and mood-specific collections, or let our advanced algorithms recommend personalized playlists based on your mood profile.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- howtouse section end -->
+
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Pages</h2>
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/about">About us</a></li>
+									<li><a href="/contact">Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Products</h2>
+								<ul>
+									<li><a href="">Music</a></li>
+									<li><a href="">Subscription</a></li>
+									<li><a href="">Custom Music</a></li>
+									<li><a href="">Footage</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Playlists</h2>
+								<ul>
+									<li><a href="">Newsletter</a></li>
+									<li><a href="">Careers</a></li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-5 order-lg-1 footer-container">
+					<div>
+
+						<!-- <img src="img/logo.png" alt=""> -->
+						<a href="/" class="">
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';"> 
+						</a>
+						<div class="copyright">Copyright &copy;</div>
+					</div>
+					<div class="social-links">
+						<a href=""><i class="fa fa-instagram"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+	
+	<!--====== Javascripts & Jquery ======-->
+	<script>
+        var apiKey = "{{ api_key }}";
+    </script>
+	<script src="{{ url_for('static', filename='js/login.js') }}" defer type="module"></script>
+	<script src="{{ url_for('static', filename='js/signin.js') }}" defer type="module"></script>
+	<script src="{{ url_for('static', filename='js/register.js') }}" type="module"></script>
+	<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.slicknav.min.js') }}"></script>
+	<!-- <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script> -->
+	<script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/login.js') }}" defer type="module"></script>
+
+	
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+
+	</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>SolMusic | HTML Template</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SolMusic HTML Template">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Favicon -->
+	<link href="{{ url_for('static', filename='img/favicon.ico') }}" onerror="this.onerror=null; this.src='static/img/favicon.ico';" rel="shortcut icon"/>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
+	<!-- Stylesheets -->
+
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}">
+	
+	
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section clearfix">
+		<a href="/" class="site-logo">
+			<!-- <img src="img/logo.png" alt=""> -->
+			<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';">      
+
+		</a>
+		<div class="header-right">
+			
+			
+			<div class="user-panel">
+				<button type="button" class="login show-modal" data-toggle="modal" data-target="#myModal">Login</button>
+			</div> 
+		</div>
+		<ul class="main-menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</header>
+	<!-- Header section end -->
+
+	<!-- Model -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content clearfix">
+				
+				<div class="form-modal">
+    
+					<div class="form-toggle">
+						<button id="login-toggle" onclick="toggleLogin()">log in</button>
+						<button id="signup-toggle" onclick="toggleSignup()">sign up</button>
+					</div>
+				
+					<div id="login-form">
+						<form id="mainLoginForm"> 
+							<input type="text" placeholder="Enter email" id="loginEmailInp"/>
+							<input type="password" placeholder="Enter password" id="loginPassInp"/>
+							<button type="submit" class="btn login">login</button>
+							<p><a href="javascript:void(0)">Forgotten account</a></p>
+							<!-- <hr/>
+							<button type="button" class="btn -box-sd-effect login-with-google-btn" > <i class="fa fa-google fa-lg" aria-hidden="true"></i> sign in with google</button> -->
+						</form>
+					</div>
+				
+					<!-- register form -->
+					<div id="signup-form">
+						<form id="mainSignupForm">
+							<input type="text" placeholder="Enter your name" id="nameInp"/>
+							<input type="email" placeholder="Enter your email" id="emailInp"/>
+							<input type="password" placeholder="Create password" id="passwordInp"/>
+							<button type="submit" class="btn signup">Create Account</button>
+							<p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p>
+							
+						</form>
+					</div>
+					<hr/>
+					<button class="btn -box-sd-effect " id="login-with-google-btn"> <i class="fa fa-google fa-lg"></i> sign up with google</button>
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- Model end-->
+
+	<!-- Contact section -->
+	<section class="contact-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 p-0">
+					<!-- Map -->
+					<!-- <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" style="border:0" allowfullscreen></iframe></div> -->
+					<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58693.24571605437!2d83.14873893815839!3d23.158231166085347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3989a142a523118b%3A0x6838acc47a9d8a32!2sVishwavidyalaya%20Engineering%20College%20Ambikapur!5e0!3m2!1sen!2sin!4v1711475068107!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+				</div>
+				<div class="col-lg-6 p-0">
+					<div class="contact-warp">
+						<div class="section-title mb-0">
+							<h2>Get in touch</h2>
+						</div>
+						<p>Have some questions or feedback? We'd love to hear from you! Feel free to reach out to us using the contact information below:</p>
+						<ul>
+							<li>Digma, Ambikapur, Chhattisgarh</li>
+							<li>+91 1234567890</li>
+							<li>music@moodify.com</li>
+						</ul>
+						<form class="contact-from">
+							<div class="row">
+								<div class="col-md-6">
+									<input type="text" placeholder="Your name">
+								</div>
+								<div class="col-md-6">
+									<input type="text" placeholder="Your e-mail">
+								</div>
+								<div class="col-md-12">
+									<input type="text" placeholder="Subject">
+									<textarea placeholder="Message"></textarea>
+									<button class="site-btn">send message</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- contact section end -->
+
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Pages</h2>
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/about">About us</a></li>
+									<li><a href="/contact">Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Products</h2>
+								<ul>
+									<li><a href="">Music</a></li>
+									<li><a href="">Subscription</a></li>
+									<li><a href="">Custom Music</a></li>
+									<li><a href="">Footage</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Playlists</h2>
+								<ul>
+									<li><a href="">Newsletter</a></li>
+									<li><a href="">Careers</a></li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-5 order-lg-1 footer-container">
+					<div>
+
+						<!-- <img src="img/logo.png" alt=""> -->
+						<a href="/" class="">
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';"> 
+						</a>
+						<div class="copyright">Copyright &copy;</div>
+					</div>
+					<div class="social-links">
+						<a href=""><i class="fa fa-instagram"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+	
+
+	<!--====== Javascripts & Jquery ======-->
+	<script>
+        var apiKey = "{{ api_key }}";
+    </script>
+	<script src="{{ url_for('static', filename='js/login.js') }}" defer type="module"></script>
+	<script src="{{ url_for('static', filename='js/signin.js') }}" defer type="module"></script>
+	<script src="{{ url_for('static', filename='js/register.js') }}" type="module"></script>
+	<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.slicknav.min.js') }}"></script>
+	<!-- <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script> -->
+	<script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	
+
+	</body>
+</html>
