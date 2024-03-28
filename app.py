@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import tensorflow
 from keras.models import load_model
-from flask import Flask, Response, render_template, request, jsonify, url_for
+from flask import Flask, Response, render_template, request, jsonify, url_for, jsonify
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ fernet = load_model('fernet.h5', compile=False)
 
 global roi
 global emotion
-global emotion_img_path
+# global emotion_img_path
 
 def process_video():
     cap = cv2.VideoCapture(0)
@@ -57,33 +57,46 @@ def recommend_songs(emotion, data):
 def index():
     return render_template('index.html')
 
+@app.route('/main')
+def main():
+    return render_template('main.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 @app.route('/start_streaming', methods=['GET','POST'])
 def start_streaming():
     return Response(process_video(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/stop_streaming', methods=['GET','POST'])
+@app.route('/stop_streaming', methods=['GET'])
 def stop_streaming():
     return jsonify({'success': True})
                
-@app.route('/emotion_prediction_function', methods=['POST', 'GET'])
+@app.route('/main/emotion_prediction_function', methods=['POST', 'GET'])
 def emotion_prediction_function():
     global roi
     model = load_model('fernet.h5', compile=False)
     label_map = ['Happy', 'Sad']
-    img_path = ['css/Happy.png' , 'css/Sad.png']
+    # img_path = ['css-main/Happy.png' , 'css-main/Sad.png']
     model_pred = fernet.predict(roi, verbose=0)
     label = np.where(model_pred > 0.5, 1, 0)
     global emotion
     emotion = label_map[label[0][0]]
-    global emotion_img_path
-    emotion_img_path = img_path[label[0][0]]
-    return render_template('index.html', emotion_prediction_label=emotion, image_path=emotion_img_path)    
+    # global emotion_img_path
+    # emotion_img_path = img_path[label[0][0]]
+    # return render_template('main.html', emotion_prediction_label=emotion)    
+    return jsonify({'emotion_prediction_label': emotion})
 
 @app.route('/static/<path:path>', methods=['GET'])
 def send_static(path):
     return send_from_directory('static', path)
 
-@app.route('/recommend_tracks_function', methods=['POST', 'GET'])
+@app.route('/main/recommend_tracks_function', methods=['POST', 'GET'])
 def recommend_tracks_function():
     song_data = connect_db()
     global emotion
@@ -93,7 +106,8 @@ def recommend_tracks_function():
         names = data.iloc[i,1] + ' - '+ data.iloc[i,2]
         url = "https://open.spotify.com/track/" + data.iloc[i,0]
         song_dict[names] = url
-    return render_template("index.html", emotion_prediction_label=emotion, image_path=emotion_img_path, results=song_dict)
+    # return render_template("main.html", emotion_prediction_label=emotion, results=song_dict)
+    return jsonify({'results': song_dict})
 
 if __name__ == '__main__':
     app.run(debug=True,  use_reloader=False)

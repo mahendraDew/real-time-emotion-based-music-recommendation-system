@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Moodify</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SolMusic HTML Template">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Favicon -->
+	<link href="{{ url_for('static', filename='img/favicon.ico') }}" onerror="this.onerror=null; this.src='static/img/favicon.ico';" rel="shortcut icon"/>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
+	<!-- Stylesheets -->
+
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}">
+	
+	
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section clearfix">
+		<a href="/" class="site-logo">
+			<!-- <img src="img/logo.png" alt=""> -->
+			<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';">      
+
+		</a>
+		<div class="header-right">
+			
+			
+			<div class="user-panel">
+				
+				<!-- <a href="" class="login">Login</a> -->
+				<form action="">
+					<button type="button" id="signOutBtn" class="logout show-modal" data-toggle="modal" data-target="#myModal">log out</button>
+				</form>
+			</div> 
+		</div>
+		<ul class="main-menu">
+			<li><a href="/index">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+		<div class="text-white">
+			<h2 id="username"></h2>
+			<h2 id="useremail"></h2>
+			<img src="" alt="" id="userProfile">
+		</div>
+	</header>
+	<!-- Header section end -->
+
+	<!-- step1 section -->
+	<section class="step1-section">
+        
+        <div class="step1-items">
+            <div class="container">
+                <h2>Step 1: Face Detection</h2>  
+                <p>In the "Step 1: Face Detection" section, you'll experience the magic of our face detection feature. Here, you simply need to click the "Start" button to activate your webcam. Once activated, our system will instantly detect your face in the video feed. It's as easy as that! This step sets the stage for exciting interactions ahead, like recognizing emotions or receiving personalized music recommendations. So go ahead, click "Start," and let's dive into the world of facial recognition together!</p>
+
+                <div class="step1-btn">
+                    <div class="cls_detect">
+
+                        <button id="start_button" class="cls_start_button" onclick="startVideo()">Start</button>
+                        <button id="stop_button" class="cls_stop_button" onclick="stopVideo()">Stop</button> 
+                      
+                    </div>  
+                </div>
+				<div class="camera-container">
+					<div class="camera-box">
+						<!-- <p>Open the camera (click on the start button)</p> -->
+						<video id="vid" class="cls_video_play"  autoplay src="{{ url_for('start_streaming') }}"></video>
+						<div id="overlay">Open the camera (click on the start button)</div>
+					</div>
+				</div>
+            </div>
+        </div>
+		
+	</section>
+	<!-- step1 section end -->
+
+	<!-- step2 section -->
+	<section class="step2-section">
+        
+        <div class="step2-items">
+            <div class="container">
+                <h2>Step 2: Emotion Recognition</h2>  
+                <p>In "Step 2: Emotion Recognition," we take your facial expressions to the next level. After our system detects your face in the video feed, it goes a step further by analyzing your emotions in real-time. Just click the "Predict" button, and our algorithms will work their magic to determine your current emotion, whether it's happiness, sadness, or anything in between. It's a fun and insightful way to explore how your facial expressions reflect your inner feelings. So, give it a try and discover what emotions our system uncovers!</p>
+
+                <div class="step2-btn">
+                    <div class="cls_emotion_pred_button">
+      
+						<form id="emotion_form">
+							<button id="predict_button" class="cls_emotion_button" type="button" onclick="predictEmotion()" disabled>Predict</button>
+						</form>
+				  
+					  </div>  
+                </div>
+				<div class="emotion-label-container">
+					<div class="cls_emotion_pred_label">
+						<h3>Your current <span> emotion</span>: <span id="emotion_prediction_result"></span></h3>
+						<!-- <h3>Your current <span> emotion</span>: {{ emotion_prediction_label }}</h3> -->
+						<!-- <p> {{ emotion_prediction_label }} </p> -->
+					</div> 
+				</div>
+				
+            </div>
+        </div>
+		
+	</section>
+	<!-- step2 section end -->
+
+	<!-- step3 section -->
+	<section class="step3-section">
+        
+        <div class="step3-items">
+            <div class="container">
+                <h2>Step 3: Song Recommendation</h2>  
+                <p>In "Step 3: Song Recommendations," get ready for personalized music suggestions tailored just for you. Once you've explored your emotions in the previous steps, it's time to unwind with some tunes. Simply click the "Recommend" button, and our system will curate a selection of songs based on your current mood. Whether you're feeling upbeat, mellow, or somewhere in between, our recommendations are sure to strike the right chord. So sit back, relax, and let the music transport you to your happy place!</p>
+
+                <div class="step3-btn">
+					<div class="cls_recommend_songs_button">
+        
+						<form id="songs_form">
+							<button id="recommend_button" class="cls_recommend_button" type="button" onclick="recommendTracks()" disabled>Recommend</button>
+						</form>
+					  
+					  </div> 
+                </div>
+				<div class="song-container">
+					<div id="song_recommendation_result">
+						
+					  </div> 
+				</div>
+            </div>
+        </div>
+		
+	</section>
+	<!-- step3 section end -->
+	
+
+	<!-- howtouse section end -->
+	<section class="howtouse-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="section-title">
+						<h2>How to Use</h2>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<p>Our platform offers a seamless and intuitive experience to help you discover the perfect soundtrack for every moment. In this guide, we'll walk you through the simple steps to unleash the full potential of Moodify and immerse yourself in personalized music experiences like never before. Let's dive in!</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/brain.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/brain.png';"> 
+						</div>
+						<h4>Create an account </h4>
+						<p> Get started by creating your personalized Moodify account. Simply provide basic information such as your email address and create a secure password. Once registered, you'll gain access to a world of customized music experiences tailored to your emotions.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/pointer.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/pointer.png';"> 
+						</div>
+						<h4>Set Your Mood</h4>
+						<p>After logging in, begin by selecting or inputting your current mood. Whether you're feeling upbeat and energetic, calm and relaxed, or somewhere in between, Moodify's intuitive interface allows you to express your emotions effortlessly.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="how-item">
+						<div class="howtouse-icon">
+							<!-- <img src="img/icons/smartphone.png" alt=""> -->
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/icons/smartphone.png';"> 
+						</div>
+						<h4>Explore Curated Playlists</h4>
+						<p>Once your mood is set, dive into Moodify's extensive library of curated playlists designed to match your emotional state. Browse through a diverse range of genres, artists, and mood-specific collections, or let our advanced algorithms recommend personalized playlists based on your mood profile.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- howtouse section end -->
+
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Pages</h2>
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/about">About us</a></li>
+									<li><a href="/contact">Contact us</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Products</h2>
+								<ul>
+									<li><a href="">Music</a></li>
+									<li><a href="">Subscription</a></li>
+									<li><a href="">Custom Music</a></li>
+									<li><a href="">Footage</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Playlists</h2>
+								<ul>
+									<li><a href="">Newsletter</a></li>
+									<li><a href="">Careers</a></li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-5 order-lg-1 footer-container">
+					<div>
+
+						<!-- <img src="img/logo.png" alt=""> -->
+						<a href="index" class="site-logo">
+							<img src="{{ url_for('static', filename=image_path) }}" onerror="this.onerror=null; this.src='static/img/logo.png';"> 
+						</a>
+						<div class="copyright">Copyright &copy;</div>
+					</div>
+					<div class="social-links">
+						<a href=""><i class="fa fa-instagram"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+	
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.slicknav.min.js') }}"></script>
+	<!-- <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script> -->
+	<script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main-webcam.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/login.js') }}" defer type="module"></script>
+	<script src="{{ url_for('static', filename='js/signout.js') }}" defer type="module"></script>
+
+	
+
+
+	<script>
+		function predictEmotion() {
+			$.ajax({
+				url: '/main/emotion_prediction_function',
+				type: 'POST',
+				success: function(data) {
+					$('#emotion_prediction_result').html(data.emotion_prediction_label);
+				}
+			});
+
+			// Enable the recommend button
+			document.getElementById("recommend_button").disabled = false;
+		}
+		function recommendTracks() {
+			$.ajax({
+				url: '/main/recommend_tracks_function',
+				type: 'POST',
+				success: function(data) {
+					var html = '<ul>';
+					$.each(data.results, function(name, url) {
+						html += '<li><a href="' + url + '" target="_blank">' + name + '</a></li>';
+					});
+					html += '</ul>';
+					$('#song_recommendation_result').html(html);
+				}
+			});
+		}
+
+	</script>
+	</body>
+</html>
