@@ -653,7 +653,7 @@ Header section
 	border: 1px solid #fc0254;
 }
 .logout:hover{
-	border: none;
+	/* border: none;  */
 	color: #fff;
 	background-color: #fc0254;
 }
